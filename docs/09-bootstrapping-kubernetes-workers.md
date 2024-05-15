@@ -112,6 +112,12 @@ Create the `bridge` network configuration file:
 mv 10-bridge.conf 99-loopback.conf /etc/cni/net.d/
 ```
 
+### (For Raspbian) Enable cgroups limit support
+
+```bash
+sed -i '$ s/$/ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1 swapaccount=1/' /boot/firmware/cmdline.txt
+```
+
 ### Configure containerd
 
 Install the `containerd` configuration files:
